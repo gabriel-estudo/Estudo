@@ -1,0 +1,49 @@
+body {
+    background-color: #ccc;
+}
+
+table {
+    background-color: white;
+}
+
+li {
+    color: red;
+}
+
+.item {
+    color: blue;
+}
+
+.item1 {
+    color: green;
+}
+
+.item2 {
+    color: violet;
+}
+
+.item3 {
+    color: gray;
+}
+
+#nome_completo {
+
+    background-color: whitesmoke;
+    font-size: 30px;
+}
+
+#div_1 {
+    border: 2px solid;
+    margin-top: 20px;
+}
+
+#div_2 {
+    border: 5px solid red;
+    background-color: yellow;
+    color: blue;
+    text-align: center;
+}
+
+.li_categoria {
+    padding: 20px;
+}

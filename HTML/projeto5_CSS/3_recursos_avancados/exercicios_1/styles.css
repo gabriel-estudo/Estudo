@@ -1,0 +1,43 @@
+/*background color muda a cor do fundo*/
+
+.background-highlight {
+    background-color: yellow;
+}
+
+h1 {
+    background-color: aqua;
+}
+
+.text-large {
+    font-size: 24px;
+}
+
+.hex-color {
+    color: #7a7faf;
+}
+
+.bg-opacity {
+    color: rgba(121, 171, 228, 0.5);
+    font-size: 24px;
+}
+
+.padding-example {
+    padding: 20px;
+    border: 1px solid black;
+}
+
+.width-height {
+    margin: 15px;
+}
+
+.relative-container {
+    position: relative;
+    border: 1px solid black;
+    height: 200px;
+}
+
+.absolutely-positioned {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}

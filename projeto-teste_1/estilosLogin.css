@@ -1,0 +1,100 @@
+body {
+    font-family: Helvetica;
+    margin: 20px;
+    background-color: #312b2b;
+}
+
+h1,
+h2 {
+    color: #333;
+    text-align: center;
+    color: white;
+}
+
+h2 {
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 5px;
+    margin-top: 40px;
+}
+
+form {
+    background-color: #706868;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    max-width: 600px;
+    margin: 0 auto;
+    margin-bottom: 40px;
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type="color"] {
+    width: 30px;
+    height: 30px;
+    padding: 2px;
+}
+
+input[type="password"] {
+    letter-spacing: 0.1em;
+}
+
+.submit-buttons {
+    margin-top: 20px;
+    width: 100%;
+}
+
+button[type="submit"] {
+    color: white;
+    padding: 12px 20px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button[type="submit"] {
+    background-color: #4caf50;
+}
+
+button[type="submit"]:hover {
+    opacity: 0.9;
+}
+
+@media (max-width: 600px) {
+    body {
+        margin: 10px;
+    }
+
+    form {
+        padding: 15px;
+    }
+
+    button[type="submit"]
+    {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .submit-buttons {
+        display: flex;
+        flex-direction: column;
+    }
+}
