@@ -186,4 +186,3 @@ function objeto(argumento1, argumento2) {
     }
 */
 
-// classes
