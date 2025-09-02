@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #fff;
+}
+
+.container {
+  display: flex;
+  gap: 20px;
+  overflow: hidden;
+  height: 500px; /* altura da área visível */
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  /* animation: scroll 3s linear infinite; */
+}
+
+/* Coluna 1 (mais rápida) */
+#col1 {
+  animation: scroll 3s linear infinite;
+}
+
+/* Coluna 2 (mais lenta) */
+#col2 {
+  animation: scroll 2s linear infinite;
+}
+
+.column img {
+  width: 200px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+/* Animação de rolagem vertical */
+@keyframes scroll {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
+</style>
+<script>
+ document.querySelectorAll('.column').forEach(col => {
+  const clone = col.cloneNode(true);
+  col.appendChild(clone);
+});
+
+
+
+
+</script>
+</head>
+<body>
+    <div class="container">
+  <div class="column" id="col1">
+    <img src="images/24k magic.jpg" alt="">
+    <img src="images/808s.jpeg" alt="">
+    <img src="images/ds2.jpg" alt="">
+    <!-- <img src="img4.jpg" alt=""> -->
+  </div>
+
+  <div class="column" id="col2">
+    <img src="images/The Divine Feminine_.jpeg" alt="">
+    <img src="images/Uma outra estação.jpeg" alt="">
+    <!-- <img src="img7.jpg" alt="">
+    <img src="img8.jpg" alt=""> -->
+  </div>
+</div>
+
+</body>
+</html>

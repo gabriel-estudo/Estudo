@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Carrossel vertical infinito</title>
+<style>
+  :root { --gap: 20px; }
+
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: #0e0e11;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+  }
+
+  /* Ocupa a altura inteira da tela */
+  .marquee {
+    height: 100vh;
+    display: flex;
+    gap: 28px;
+    padding: 24px;
+    overflow: hidden;            /* esconde o que sai pra cima/baixo */
+  }
+
+  /* Cada coluna é uma pilha vertical */
+  .col {
+    display: flex;
+    flex-direction: column;
+    row-gap: var(--gap);
+    will-change: transform;
+    transform: translateZ(0);    /* ajuda a evitar micro “piscadas” */
+    animation-name: scrollY;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-duration: var(--duration, 12s); /* ajustado via JS/atributo */
+  }
+
+  /* Largura/estilo das imagens (ajuste como preferir) */
+  .col img {
+    width: clamp(180px, 22vw, 260px);
+    aspect-ratio: 4/5;           /* mantém proporção agradável */
+    object-fit: cover;
+    border-radius: 16px;
+    display: block;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+
+  /* A animação usa uma variável com a distância exata a percorrer */
+  @keyframes scrollY {
+    to { transform: translateY(calc(-1 * var(--scroll-distance))); }
+  }
+
+  /* Acessibilidade: respeita usuários que preferem menos movimento */
+  @media (prefers-reduced-motion: reduce) {
+    .col { animation: none; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="marquee">
+    <!-- Mais rápida (defina a duração em segundos) -->
+    <div class="col" data-duration="9">
+      <img src="images/24k magic.jpg" alt="">
+      <img src="images/808s.jpeg" alt="">
+      <img src="images/ds2.jpg" alt="">
+      <img src="images/Uma outra estação.jpeg" alt="">
+      <img src="images/The Divine Feminine_.jpeg" alt="">
+    </div>
+
+    <!-- Mais lenta -->
+    <div class="col" data-duration="12">
+      <img src="images/24k magic.jpg" alt="">
+      <img src="images/808s.jpeg" alt="">
+      <img src="images/ds2.jpg" alt="">
+      <img src="images/Uma outra estação.jpeg" alt="">
+      <img src="images/The Divine Feminine_.jpeg" alt="">
+    </div>
+  </div>
+
+<script>
+  function setupInfiniteColumns() {
+    document.querySelectorAll('.col').forEach(col => {
+      // 1) Clonar APENAS os filhos (imagens), para dobrar o conteúdo
+      const originals = Array.from(col.children);
+      const frag = document.createDocumentFragment();
+      originals.forEach(node => frag.appendChild(node.cloneNode(true)));
+      col.appendChild(frag);
+
+      // 2) Calcular a altura do bloco original (imagens originais + gaps)
+      const styles = getComputedStyle(col);
+      const gap = parseFloat(styles.rowGap || styles.gap || 0);
+      const originalHeight =
+        originals.reduce((sum, el) => sum + el.getBoundingClientRect().height, 0)
+        + gap * (originals.length - 1);
+
+      // 3) Passar a distância e a duração via CSS vars
+      col.style.setProperty('--scroll-distance', `${originalHeight}px`);
+
+      const duration = Number(col.dataset.duration) || 12; // segundos
+      col.style.setProperty('--duration', `${duration}s`);
+    });
+  }
+
+  // Recalcula ao carregar e quando a janela muda de tamanho
+  window.addEventListener('load', setupInfiniteColumns);
+  window.addEventListener('resize', () => {
+    document.querySelectorAll('.col').forEach(col => {
+      const styles = getComputedStyle(col);
+      const gap = parseFloat(styles.rowGap || styles.gap || 0);
+
+      // Considera apenas a primeira metade (conteúdo original)
+      const half = Math.floor(col.children.length / 2);
+      const originals = Array.from(col.children).slice(0, half);
+
+      const originalHeight =
+        originals.reduce((sum, el) => sum + el.getBoundingClientRect().height, 0)
+        + gap * (originals.length - 1);
+
+      col.style.setProperty('--scroll-distance', `${originalHeight}px`);
+    });
+  });
+</script>
+</body>
+</html>
