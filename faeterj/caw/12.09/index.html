@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <style>
+        * {
+    font-family: sans-serif;
+    text-align: center;
+}
+
+h1 {
+    margin-top: 50px;
+    margin-bottom: 100px;    
+}
+
+.label {
+    font-size: 18px;
+}
+
+.input {
+    margin-bottom: 20px;
+    border-radius: 4px;
+    border: 1px solid rgb(194, 194, 194);
+    height: 30px;
+    width: 250px;
+    font-size: 12px;
+}
+
+.input-confirme {
+    margin-left: 8px;
+    border-radius: 4px;
+    border: 1px solid rgb(194, 194, 194);
+    height: 30px;
+    width: 250px;
+    font-size: 12px;
+}
+
+.botao {
+    cursor: pointer;
+    margin-top: 20px;
+    height: 60px;
+    width: 200px;
+    font-size: large;
+    color: white;
+    background-color: #4caf50;
+    border: 2px solid black;
+    border-radius: 15px;
+}
+
+
+    </style>
+
+    <title>Formulario validado</title>
+
+</head>
+<body>
+    <form class="formulario">
+
+        <h1>FORMULARIO</h1>
+
+        <div>
+            <label for="nome" class="label">Digite seu nome</label>
+            <br>
+            <input type="text" class="input" id="nome">
+        </div>
+
+        <div>
+            <label for="email" class="label">Digite seu email</label>
+            <br>
+            <input type="email" class="input" id="email">
+        </div>
+
+        <div>
+            <label for="senha" class="label">Digite sua senha</label>
+            <br>
+
+            <input type="password" class="input" id="senha">
+        </div>
+
+        <div>
+            <label for="confirme_senha" class="label">Confirme sua senha</label>
+            <br>
+            <input type="password" class="input" id="confirme_senha">
+        </div>
+
+        <button type="button" class="botao" onclick="validar()">Cadastrar</button>
+    </form>
+</body>
+</html>
+
+ <script>
+    function validar() {
+    let nome = document.getElementById("nome");
+    let email = document.getElementById("email");
+    let senha = document.getElementById("senha");
+    let confirme_senha = document.getElementById("confirme_senha");
+
+    if(nome.value == '' || email.value == '' || senha.value == '' || confirme_senha.value == '')
+    {
+        alert("preencha todos os campos do formulario");
+    }
+
+}
+ </script>
