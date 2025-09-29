@@ -32,8 +32,9 @@ button{
 
 
 .subtitulo{
-    padding-left: 300px;
+    text-align: center;
     padding-top: 30px;
+    padding-bottom: 30px;
     font-weight: normal;
     font-family: sans;
 }
@@ -44,7 +45,10 @@ table {
 }
 
 .imagem {
-    
+    display: block;
+    border-radius: 5px;
+    max-width: 300px;
+    max-height: 3000px;
 }
 
 th, td {
